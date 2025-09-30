@@ -49,7 +49,28 @@ view: users {
     type: zipcode
     sql: ${TABLE}.zip ;;
   }
-  measure: count {
+  dimension: full_name {
+    type: string
+    sql: CONCAT (${first_name},' ' ,${last_name}) ;;
+  }
+  dimension: full_name_length {
+    type: number
+    sql: LENGTH(${full_name}) ;;
+  }
+  dimension: age_tier {
+    type: tier
+    label: "Age Decade Tier"
+    sql: ${age} ;;
+    tiers: [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    style: integer
+  }
+    measure: average_user_age {
+      type: average
+      label: "Average User Age"
+      sql: ${age} ;;
+      value_format_name: decimal_2
+    }
+    measure: count {
     type: count
     drill_fields: [detail*]
   }
@@ -57,16 +78,16 @@ view: users {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	first_name,
-	last_name,
-	demo_visits_data.count,
-	events.count,
-	orders.count,
-	saralooker.count,
-	sindhu.count,
-	user_data.count
-	]
+  id,
+  first_name,
+  last_name,
+  demo_visits_data.count,
+  events.count,
+  orders.count,
+  saralooker.count,
+  sindhu.count,
+  user_data.count
+  ]
   }
 
 }
