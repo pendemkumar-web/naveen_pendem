@@ -37,6 +37,7 @@ view: order_items {
   measure: total_revenue  {
     type: sum
     value_format: "$0.00"
+    drill_fields: [product.brand,users.gender,inventory_items.product_id]
     sql: ${sale_price} ;;
   }
   measure: count {
