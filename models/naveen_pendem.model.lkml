@@ -7,13 +7,13 @@ datagroup: naveen_pendem_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
-datagroup: orders_datagroup {
+datagroup: users_datagroup {
   label: "Orders Datagroup"
-  sql_trigger: SELECT MAX(id) FROM orders;;
+  sql_trigger: SELECT MAX(id) FROM users;;
   max_cache_age: "30 minutes"
 }
 
-datagroup: users_datagroup {
+datagroup: orders_datagroup {
   sql_trigger: SELECT MAX(id) FROM orders;;
   max_cache_age: "15 hours"
 }
@@ -153,6 +153,7 @@ explore: lrjp14_e1757972862083_testincrementalpdt {}
 explore: map_layer {}
 
 explore: orders {
+  persist_with: users_datagroup
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
