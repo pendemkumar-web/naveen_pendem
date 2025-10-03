@@ -1,5 +1,4 @@
-view: derived {}
- view: add_a_unique_name_1759473324 {
+ view: derived {
     derived_table: {
       explore_source: orders {
         column: count {}
@@ -18,4 +17,3 @@ view: derived {}
       description: ""
     }
   }
-
