@@ -54,6 +54,8 @@ explore: customer {}
 
 explore: day_of_week {}
 
+explore: derived {}
+
 explore: demo_visits_data {
   join: users {
     type: left_outer
