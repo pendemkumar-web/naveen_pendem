@@ -53,6 +53,7 @@ explore: countries {}
 explore: customer {}
 
 explore: day_of_week {}
+explore: sql_runner_query {}
 
 explore: derived {}
 
